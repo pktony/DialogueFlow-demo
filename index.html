@@ -3,40 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Play the Dialogue Flow Unity RPG sample in your browser. Meet residents, accept a quest, and explore dialogue choices.">
-  <title>Dialogue Flow · Play the sample</title>
+  <title>Dialogue Flow</title>
   <style>
-    :root{color-scheme:dark;--bg:#0f172a;--panel:#192134;--text:#f8fafc;--muted:#b4c2d4;--accent:#fbbf24;--line:#334155}
-    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,sans-serif}a{color:var(--accent);text-underline-offset:4px}button,a{touch-action:manipulation}button{cursor:pointer;font:inherit;border-radius:8px;padding:10px 18px;border:1px solid var(--line);background:var(--panel);color:var(--text)}button:hover{border-color:var(--accent)}:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
-    header,main,footer{max-width:1328px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-weight:750;font-size:20px;color:var(--text);text-decoration:none}nav{display:flex;gap:24px}h1{font-size:clamp(30px,4vw,48px);line-height:1.15;margin:10px 0 14px;letter-spacing:-.03em}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--accent);font-weight:700}.intro{color:var(--muted);max-width:740px;margin:0 0 24px}.stage{position:relative;width:100%;aspect-ratio:16/9;background:#080e19;border:1px solid var(--line);border-radius:12px;overflow:hidden}canvas{display:block;width:100%;height:100%;background:#080e19}.overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:#080e19}.overlay p{max-width:500px;color:var(--muted)}#start{background:var(--accent);color:#101827;border:0;font-weight:700;padding:14px 28px}progress{width:min(340px,80%);accent-color:var(--accent)}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:16px 0 28px}#status{color:var(--muted);font-size:14px}.actions{display:flex;gap:10px}.guide{display:grid;grid-template-columns:1fr 1fr;gap:24px;border-top:1px solid var(--line);padding-top:20px}.guide h2{font-size:18px;margin:0 0 10px}.guide p{margin:0;color:var(--muted)}kbd{font:13px ui-monospace,monospace;border:1px solid #64748b;border-radius:4px;padding:2px 6px;background:var(--panel);color:var(--text)}footer{font-size:13px;color:var(--muted);padding-top:0}footer a{color:inherit}
-    @media(max-width:640px){header,main,footer{padding:18px}header{align-items:start}.guide{grid-template-columns:1fr}nav{gap:12px;font-size:14px}.toolbar{align-items:start;flex-direction:column}.overlay p{font-size:13px;margin:8px 0}.overlay h2{margin:0;font-size:20px}.intro{font-size:15px}.stage{min-height:230px}#start{padding:10px 18px}}[hidden]{display:none!important}
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#101820;color:#eee9da;font:14px/1.5 system-ui,sans-serif}header,main,footer{width:min(1280px,calc(100% - 32px));margin:auto}header{height:60px;display:flex;align-items:center;justify-content:space-between}header strong{font-size:19px}a{color:#ddbd77;text-underline-offset:3px}button{font:inherit;cursor:pointer;border:1px solid #64717a;background:#24313a;color:#eee9da;border-radius:6px;padding:8px 14px}button:hover{border-color:#ddbd77}button:disabled{opacity:.4;cursor:default}:focus-visible{outline:3px solid #ddbd77;outline-offset:4px}.stage{position:relative;aspect-ratio:16/9;background:#0a1117;border:1px solid #374851;border-radius:8px;overflow:hidden}canvas{display:block;width:100%;height:100%}.overlay{position:absolute;inset:0;display:grid;place-content:center;gap:16px;text-align:center;background:#101820}#start{background:#ddbd77;color:#101820;font-weight:700;border:0;padding:14px 28px}progress{accent-color:#ddbd77;width:260px;max-width:80vw}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}.actions{display:flex;gap:8px}#status{color:#becbd1}footer{color:#aebdc5;font-size:12px;padding-bottom:16px}footer a{color:inherit}[hidden]{display:none!important}@media(max-width:640px){header,main,footer{width:calc(100% - 20px)}.toolbar{flex-wrap:wrap;gap:8px}#status{font-size:12px}}
   </style>
 </head>
 <body>
-  <header><a class="brand" href="./">Dialogue Flow</a><nav aria-label="Project"><a href="https://github.com/pktony/DialogueFlow">GitHub</a><a href="https://github.com/pktony/DialogueFlow#install">Install package</a></nav></header>
+  <header><strong>Dialogue Flow</strong><a href="https://github.com/pktony/DialogueFlow">GitHub</a></header>
   <main>
-    <div class="eyebrow">Interactive Unity sample</div>
-    <h1>A village. A quest. Your choices.</h1>
-    <p class="intro">Explore a small RPG built with Dialogue Flow. Talk to different residents, accept Mira’s quest, and see how your choices change their replies.</p>
-    <section class="stage" aria-label="Playable village sample">
-      <canvas id="unity-canvas" width="1280" height="720" tabindex="0" aria-label="Village Gate game. Use WASD to move and E to talk."></canvas>
-      <div class="overlay" id="overlay"><h2 id="loading-title">Welcome to Village Gate</h2><p id="loading-description">Desktop keyboard and mouse recommended. In-game dialogue is Korean. The sample runs locally in your browser.</p><button id="start" type="button">Play sample</button><progress id="progress" max="1" value="0" aria-label="Loading game" hidden></progress></div>
+    <section class="stage" aria-label="Village Gate game">
+      <canvas id="unity-canvas" width="1280" height="720" tabindex="0" aria-label="Village Gate. WASD to move, E to talk."></canvas>
+      <div class="overlay" id="overlay"><button id="start" type="button">Play</button><span id="loading-title" role="status"></span><progress id="progress" max="1" value="0" aria-label="Loading game" hidden></progress></div>
     </section>
-    <div class="toolbar"><span id="status" role="status" aria-live="polite">Ready to play · WebGL 2 required</span><div class="actions"><button id="restart" type="button">Restart sample</button><button id="fullscreen" type="button" disabled>Fullscreen</button></div></div>
-    <section class="guide" aria-label="How to play"><div><h2>Controls</h2><p><kbd>WASD</kbd> / arrows — walk · <kbd>E</kbd> — talk<br>Click the dialogue / <kbd>Space</kbd> — continue<br>Click a choice / <kbd>1</kbd>–<kbd>3</kbd> — answer · <kbd>Esc</kbd> — close</p></div><div><h2>Try the story</h2><p>Meet residents before accepting a quest. Talk to Mira (미라), then revisit Rowan (로완) and Lina (리나). Find the lantern keeper in the forest, collect the herb, and return to Mira. Use the in-game reset button to try other choices.</p></div></section>
+    <div class="toolbar"><span id="status" role="status">WASD move · E talk · Click / Space continue · 1–3 choose</span><div class="actions"><button id="restart" type="button">Restart</button><button id="fullscreen" type="button" disabled>Fullscreen</button></div></div>
   </main>
-  <footer>Built from the real Unity sample using uGUI and per-character components. <a href="https://github.com/pktony/DialogueFlow/tree/main/Packages/com.pktony.dialogue-flow/Samples~">Explore the source</a> · Font: Noto Sans KR, <a href="OFL.txt">SIL Open Font License</a>.</footer>
+  <footer>Noto Sans KR · <a href="OFL.txt">Font license</a></footer>
   <script>
-    const canvas=document.querySelector('#unity-canvas'),status=document.querySelector('#status'),overlay=document.querySelector('#overlay'),progress=document.querySelector('#progress'),start=document.querySelector('#start');
+    const canvas=document.querySelector('#unity-canvas'),status=document.querySelector('#status'),overlay=document.querySelector('#overlay'),progress=document.querySelector('#progress'),start=document.querySelector('#start'),title=document.querySelector('#loading-title');
     let game;
-    function fail(message){overlay.hidden=false;document.querySelector('#loading-title').textContent='Unable to start the sample';document.querySelector('#loading-description').textContent=message;progress.hidden=true;status.textContent='Loading failed. Restart to try again.';}
+    function fail(message){overlay.hidden=false;title.textContent=message;progress.hidden=true;status.textContent='Loading failed. Restart to try again.';}
     start.addEventListener('click',()=>{
-      start.hidden=true;progress.hidden=false;document.querySelector('#loading-title').textContent='Loading Village Gate';status.textContent='Downloading Unity player…';
-      const loader=document.createElement('script');loader.src='Build/WebGL.loader.js';loader.onerror=()=>fail('The player could not be downloaded. Check your connection and restart.');
-      loader.onload=()=>createUnityInstance(canvas,{
-        dataUrl:'Build/WebGL.data.unityweb',frameworkUrl:'Build/WebGL.framework.js.unityweb',codeUrl:'Build/WebGL.wasm.unityweb',streamingAssetsUrl:'StreamingAssets',companyName:'pktony',productName:'Dialogue Flow',productVersion:'0.5.0',
-        showBanner:(message,type)=>{if(type==='error')fail(message);}
-      },value=>{progress.value=value;status.textContent=`Loading sample · ${Math.round(value*100)}%`;}).then(instance=>{game=instance;overlay.hidden=true;status.textContent='Click the game to focus · WASD to walk · E to talk';document.querySelector('#fullscreen').disabled=false;canvas.focus();}).catch(error=>fail(String(error)));
+      start.hidden=true;progress.hidden=false;title.textContent='Loading…';
+      const loader=document.createElement('script');loader.src='Build/WebGL.loader.js';loader.onerror=()=>fail('Unable to download the player.');
+      loader.onload=()=>createUnityInstance(canvas,{dataUrl:'Build/WebGL.data.unityweb',frameworkUrl:'Build/WebGL.framework.js.unityweb',codeUrl:'Build/WebGL.wasm.unityweb',streamingAssetsUrl:'StreamingAssets',companyName:'pktony',productName:'Dialogue Flow',productVersion:'0.5.0',showBanner:(message,type)=>{if(type==='error')fail(message);}},value=>{progress.value=value;title.textContent=`Loading ${Math.round(value*100)}%`;}).then(instance=>{game=instance;overlay.hidden=true;document.querySelector('#fullscreen').disabled=false;canvas.focus();}).catch(error=>fail(String(error)));
       document.body.append(loader);
     });
     canvas.addEventListener('click',()=>canvas.focus());
